@@ -34,6 +34,7 @@ void tvm_vm_add(Tvm* vm, Instruction inst) {
 	int reg = inst.op1.data.int_value;
 	tvm_vm_sure_reg(vm, reg);
 	v1 = vm->registers[reg].data;
+	r1 = reg;
     } else if (inst.op1.kind == OPK_Interger) {
 	v1 = inst.op1.data.int_value;
     }
@@ -64,6 +65,7 @@ void tvm_vm_sub(Tvm* vm, Instruction inst) {
 	int reg = inst.op1.data.int_value;
 	tvm_vm_sure_reg(vm, reg);
 	v1 = vm->registers[reg].data;
+	r1 = reg;
     } else if (inst.op1.kind == OPK_Interger) {
 	v1 = inst.op1.data.int_value;
     }
@@ -94,6 +96,7 @@ void tvm_vm_mul(Tvm* vm, Instruction inst) {
 	int reg = inst.op1.data.int_value;
 	tvm_vm_sure_reg(vm, reg);
 	v1 = vm->registers[reg].data;
+	r1 = reg;
     } else if (inst.op1.kind == OPK_Interger) {
 	v1 = inst.op1.data.int_value;
     }
@@ -150,6 +153,7 @@ void tvm_vm_cmp(Tvm* vm, Instruction inst) {
 	else if (d == DECOR_GTE) vm->registers[id].data = (v1 >= v2);
 	else if (d == DECOR_LT) vm->registers[id].data = (v1 < v2);
 	else if (d == DECOR_LTE) vm->registers[id].data = (v1 <= v2);
+	else if (d == DECOR_NE) vm->registers[id].data = (v1 != v2);
 	else {
 	    tvm_vm_throw_error(vm, tvm_trap_inv_dec("cmp", d));
 	}
@@ -191,6 +195,33 @@ void tvm_vm_exec(Tvm* vm) {
 	    tvm_vm_dump_register(vm);	    
 	} else if (inst.opcode == OP_CMP) {
 	    tvm_vm_cmp(vm, inst);
+	} else if (inst.opcode == OP_JMP) {
+	    int v1 = 0;
+	    if (inst.op1.kind == OPK_Register) {
+		RegId r1 = inst.op1.data.int_value;
+		tvm_vm_sure_reg(vm, r1);
+		v1 = vm->registers[r1].data;
+	    } else if (inst.op1.kind == OPK_Interger) {
+		v1 = inst.op1.data.int_value;
+	    }
+
+	    int pc = 0;
+	    if (inst.op2.kind == OPK_Interger) {
+		pc = inst.op2.data.int_value;
+	    } else if (inst.op2.kind == OPK_Register) {
+		RegId r2 = inst.op2.data.int_value;
+		tvm_vm_sure_reg(vm, r2);
+		pc = vm->registers[r2].data;
+	    }
+	    if (v1 == 1) {
+		vm->pc = pc;
+		continue;
+	    }
+	    
+	} else if (inst.opcode == OP_PRINT_INT) {
+	    RegId id = inst.op1.data.int_value;
+	    tvm_vm_sure_reg(vm, id);
+	    printf("%lld\n", vm->registers[id].data);
 	} else if (inst.opcode == OP_HALT) {
 	    exit(0);
 	} else {

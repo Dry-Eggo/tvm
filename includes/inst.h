@@ -20,6 +20,7 @@ typedef enum {
   
   // Debug
   OP_DUMP_REGISTER,
+  OP_PRINT_INT,
   OP_INVALID
 } Opcode;
 
