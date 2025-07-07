@@ -1,0 +1,20 @@
+
+
+# max operand = 3
+
+# here, the function opcode takes 1 operand which is the label '@main'.
+# 'export' is a decorator, not an opcode or operand
+export function @main:
+       # '@' denotes the start of a label
+       # '%' denotes the start of an immediate
+       # '$' denotes the start of a register
+       
+       .args [void]
+       .return void
+
+       movl $r1, %0
+
+       # cmp -> opcode
+       # eq  -> decorator
+       cmp eq $r1, $r2, $r3
+       return
