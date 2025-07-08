@@ -14,4 +14,4 @@ typedef struct {
     };
 } RegisterResult;
 
-Register tvm_make_register(RegId id, Qword data);
+Register nova_make_register(RegId id, Qword data);

@@ -10,6 +10,10 @@ typedef enum {
   OP_RETURN_DEF,
   OP_HALT,
   OP_JMP,
+  OP_ALLOC,
+  OP_FREE,
+  OP_WRITE,
+  OP_LOAD,
   
   // Arithmetics
   OP_ADD,
@@ -20,13 +24,14 @@ typedef enum {
   
   // Debug
   OP_DUMP_REGISTER,
+  OP_DUMP_HEAP,
   OP_PRINT_INT,
   OP_INVALID
 } Opcode;
 
 typedef enum {
   OPK_String,
-  OPK_Interger,
+  OPK_Integer,
   OPK_Register,
 } OperandKind;
 
@@ -59,9 +64,9 @@ typedef struct {
     Operand op3;
 } Instruction;
 
-Instruction tvm_make_inst(Opcode op, Decorator* decor, int dc);
-Instruction tvm_make_inst2(Opcode op, Operand op1, Operand op2, Decorator* decor, int dc);
-Instruction tvm_make_inst3(Opcode op, Operand op1, Operand op2, Operand op3, Decorator* decor, int dc);
-Operand tvm_make_opr_string(const char *s);
-Operand tvm_make_opr_int(int i);
-Operand tvm_make_opr_reg(int i);
+Instruction nova_make_inst(Opcode op, Decorator* decor, int dc);
+Instruction nova_make_inst2(Opcode op, Operand op1, Operand op2, Decorator* decor, int dc);
+Instruction nova_make_inst3(Opcode op, Operand op1, Operand op2, Operand op3, Decorator* decor, int dc);
+Operand nova_make_opr_string(const char *s);
+Operand nova_make_opr_int(int i);
+Operand nova_make_opr_reg(int i);

@@ -40,10 +40,10 @@ typedef struct {
     };
 } Trap;
 
-Trap tvm_trap_segfault(const char* msg);
-Trap tvm_trap_inv_op  (const char*, const char*);
-Trap tvm_trap_inv_reg (RegId id);
-Trap tvm_trap_inv_pc  (ProgramCounter pc);
-Trap tvm_trap_inv_ins (int opcode);
-Trap tvm_trap_inv_dec (const char*, int d);
-Trap tvm_trap_inv_dc  (const char*, const char*);
+Trap nova_trap_segfault(const char* msg);
+Trap nova_trap_inv_op  (const char*, const char*);
+Trap nova_trap_inv_reg (RegId id);
+Trap nova_trap_inv_pc  (ProgramCounter pc);
+Trap nova_trap_inv_ins (int opcode);
+Trap nova_trap_inv_dec (const char*, int d);
+Trap nova_trap_inv_dc  (const char*, const char*);
