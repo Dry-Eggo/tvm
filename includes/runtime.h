@@ -6,7 +6,7 @@
 
 #define MAX_REGISTER 22
 #define arr_len(arr) (sizeof(arr)/sizeof(arr[0]))
-#define assert_types     fprintf(stdout, "Tvm: Asserting Byte sizes...\n"); \
+#define assert_types     fprintf(stdout, "Nova: Asserting Byte sizes...\n"); \
 fprintf(stdout, "    |-  Byte  = %ld bytes\n", sizeof(Byte)); \
 assert(sizeof(Byte) == 1);\
 fprintf(stdout, "    |-  Word  = %ld bytes\n", sizeof(Word));\
@@ -15,7 +15,7 @@ fprintf(stdout, "    |-  Dword = %ld bytes\n", sizeof(Dword));\
 assert(sizeof(Dword) == 4);\
 fprintf(stdout, "    |_  Qword = %ld bytes\n", sizeof(Qword));\
 assert(sizeof(Qword) == 8);\
-fprintf(stdout, "Tvm: Asserting Byte sizes: (Ok)\n");
+fprintf(stdout, "Nova: Asserting Byte sizes: (Ok)\n");
 
 typedef struct {
   ProgramCounter pc;
