@@ -4,8 +4,8 @@ SRCDIR := src
 SRC := $(wildcard $(SRCDIR)/*.c)
 OBJ := $(patsubst $(SRCDIR)/%.c, $(OUTDIR)/%.o, $(SRC))
 FLAGS := -Iincludes/
-TESTS = $(wildcard tests/*.c);
-TESTS_OUT = $(patsubst tests/%.c, $(OUTDIR)/%.test, $(TESTS))
+TESTS := $(wildcard tests/*.c)
+TESTS_OUT := $(patsubst tests/%.c, $(OUTDIR)/%.test, $(TESTS))
 all: $(BIN)
 
 $(BIN): main.o

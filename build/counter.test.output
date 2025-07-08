@@ -1,0 +1,17 @@
+Tvm: Asserting Byte sizes...
+    |-  Byte  = 1 bytes
+    |-  Word  = 2 bytes
+    |-  Dword = 4 bytes
+    |_  Qword = 8 bytes
+Tvm: Asserting Byte sizes: (Ok)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
