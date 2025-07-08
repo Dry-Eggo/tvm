@@ -4,10 +4,20 @@
 Instruction nova_make_inst(Opcode op, Decorator* decor, int dc) {
     Instruction i;
     i.opcode = op;
-    i.opc = 1;
+    i.opc = 0;
     i.decorator_count = dc;
     memcpy(i.decorators, decor, dc * sizeof(Decorator));
     return i;
+}
+
+Instruction nova_make_inst1(Opcode op, Operand op1, Decorator* decor, int dc) {
+    Instruction i;
+    i.opcode = op;
+    i.opc = 1;
+    i.op1 = op1;
+    i.decorator_count = dc;
+    memcpy(i.decorators, decor, dc * sizeof(Decorator));
+    return i;    
 }
 
 Instruction nova_make_inst2(Opcode op, Operand op1, Operand op2, Decorator* decor, int dc) {

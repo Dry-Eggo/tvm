@@ -26,11 +26,13 @@ Qword nova_mem_alloc(Heap* heap, Qword size) {
 }
 
 void nova_mem_free(Heap* heap, Qword ptr) {
+    printf("Nova: Freeing: 0x%lld\n", ptr);
     Chunk* chunk = &heap->memory[ptr];
-    for (int i = ptr; i <= chunk->size; ++i) {
-	heap->memory[i].tag = CHUNK_UNSET;
+    for (int i = 0; i <= chunk->size; ++i) {
+	heap->memory[ptr + i].tag = CHUNK_UNSET;
     }
     chunk->size = 0;
+    chunk->tag  = CHUNK_UNSET;
 }
 
 void nova_mem_dump(Heap* heap) {

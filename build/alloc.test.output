@@ -4,6 +4,8 @@ Tvm: Asserting Byte sizes...
     |-  Dword = 4 bytes
     |_  Qword = 8 bytes
 Tvm: Asserting Byte sizes: (Ok)
+Nova: Accessing Register { 0 }
+Nova: Freeing: 0x0
 Register   0: 0
 Register   1: 31
 Register   2: 0
@@ -26,38 +28,37 @@ Register  18: 0
 Register  19: 0
 Register  20: 0
 Register  21: 0
-Chunk 0: { size: 30, set: true	Chunk-Child 0: { size: 30, set: true}
-	Chunk-Child 1: { size: 0, set: true}
-	Chunk-Child 2: { size: 0, set: true}
-	Chunk-Child 3: { size: 0, set: true}
-	Chunk-Child 4: { size: 0, set: true}
-	Chunk-Child 5: { size: 0, set: true}
-	Chunk-Child 6: { size: 0, set: true}
-	Chunk-Child 7: { size: 0, set: true}
-	Chunk-Child 8: { size: 0, set: true}
-	Chunk-Child 9: { size: 0, set: true}
-	Chunk-Child 10: { size: 0, set: true}
-	Chunk-Child 11: { size: 0, set: true}
-	Chunk-Child 12: { size: 0, set: true}
-	Chunk-Child 13: { size: 0, set: true}
-	Chunk-Child 14: { size: 0, set: true}
-	Chunk-Child 15: { size: 0, set: true}
-	Chunk-Child 16: { size: 0, set: true}
-	Chunk-Child 17: { size: 0, set: true}
-	Chunk-Child 18: { size: 0, set: true}
-	Chunk-Child 19: { size: 0, set: true}
-	Chunk-Child 20: { size: 0, set: true}
-	Chunk-Child 21: { size: 0, set: true}
-	Chunk-Child 22: { size: 0, set: true}
-	Chunk-Child 23: { size: 0, set: true}
-	Chunk-Child 24: { size: 0, set: true}
-	Chunk-Child 25: { size: 0, set: true}
-	Chunk-Child 26: { size: 0, set: true}
-	Chunk-Child 27: { size: 0, set: true}
-	Chunk-Child 28: { size: 0, set: true}
-	Chunk-Child 29: { size: 0, set: true}
-	Chunk-Child 30: { size: 0, set: true}
-}
+Chunk 0: { size: 0, set: false}
+Chunk 1: { size: 0, set: false}
+Chunk 2: { size: 0, set: false}
+Chunk 3: { size: 0, set: false}
+Chunk 4: { size: 0, set: false}
+Chunk 5: { size: 0, set: false}
+Chunk 6: { size: 0, set: false}
+Chunk 7: { size: 0, set: false}
+Chunk 8: { size: 0, set: false}
+Chunk 9: { size: 0, set: false}
+Chunk 10: { size: 0, set: false}
+Chunk 11: { size: 0, set: false}
+Chunk 12: { size: 0, set: false}
+Chunk 13: { size: 0, set: false}
+Chunk 14: { size: 0, set: false}
+Chunk 15: { size: 0, set: false}
+Chunk 16: { size: 0, set: false}
+Chunk 17: { size: 0, set: false}
+Chunk 18: { size: 0, set: false}
+Chunk 19: { size: 0, set: false}
+Chunk 20: { size: 0, set: false}
+Chunk 21: { size: 0, set: false}
+Chunk 22: { size: 0, set: false}
+Chunk 23: { size: 0, set: false}
+Chunk 24: { size: 0, set: false}
+Chunk 25: { size: 0, set: false}
+Chunk 26: { size: 0, set: false}
+Chunk 27: { size: 0, set: false}
+Chunk 28: { size: 0, set: false}
+Chunk 29: { size: 0, set: false}
+Chunk 30: { size: 0, set: false}
 Chunk 31: { size: 30, set: true	Chunk-Child 31: { size: 30, set: true}
 	Chunk-Child 32: { size: 0, set: true}
 	Chunk-Child 33: { size: 0, set: true}

@@ -243,6 +243,17 @@ void nova_vm_exec(Nova* vm) {
 	    RegId id = inst.op1.data.int_value;
 	    nova_vm_sure_reg(vm, id);
 	    printf("%lld\n", vm->registers[id].data);
+	} else if (inst.opcode == OP_FREE) {
+	    Qword ptr = 0;
+	    if (inst.op1.kind == OPK_Register) {
+		RegId id = inst.op1.data.int_value;
+		printf("Nova: Accessing Register { %d }\n", id);
+		nova_vm_sure_reg(vm, id);
+		ptr = vm->registers[id].data;
+	    } else if (inst.op1.kind == OPK_Integer) {
+		ptr = inst.op1.data.int_value;
+	    }
+	    nova_mem_free(&vm->heap, ptr);
 	} else if (inst.opcode == OP_HALT) {
 	    exit(0);
 	} else {

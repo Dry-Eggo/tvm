@@ -24,6 +24,7 @@ test: $(BIN) $(TESTS_OUT)
 $(OUTDIR)/%.test: tests/%.c
 	gcc $< -o $@ $(FLAGS) $(OBJ)
 	@echo "\033[33m---- Running $< ----\033[0m"
+	@./$@
 	./$@ > $@.output
 	@echo "\033[33m---- Done ($<) ----\033[0m"
 

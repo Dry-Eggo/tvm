@@ -7,6 +7,7 @@ int main() {
     Instruction program[] = {
 	nova_make_inst2(OP_ALLOC, nova_make_opr_int(30), nova_make_opr_reg(0), NULL, 0),
 	nova_make_inst2(OP_ALLOC, nova_make_opr_int(30), nova_make_opr_reg(1), NULL, 0),
+	nova_make_inst1(OP_FREE,  nova_make_opr_reg(0),  NULL, 0),
 	nova_make_inst(OP_DUMP_REGISTER, NULL, 0),
 	nova_make_inst(OP_DUMP_HEAP, NULL, 0),
 	nova_make_inst(OP_HALT, NULL, 0),
