@@ -12,14 +12,27 @@ Chunk* nova_mem_get_chunk(Heap* heap, Qword ptr) {
 }
 
 Qword nova_mem_alloc(Heap* heap, Qword size) {
-    for (int i = 0; i <= HEAP_SIZE; ++i) {
-	if (heap->memory[i].tag == CHUNK_UNSET) {
-	    Chunk* chunk = &heap->memory[i];
-	    chunk->tag = CHUNK_SET;
-	    chunk->size = size;
-	    for (int j = 0; j <= size; ++j) {
+    int chunks_needed = (size + 7) / 8;
+    for (int i = 0; i <= HEAP_SIZE - chunks_needed; ++i) {
+	int can_allocate = 1;
+	for (int j = 0; j < chunks_needed; ++j) {
+	    if (heap->memory[i + j].tag != CHUNK_UNSET) {
+		can_allocate = 0;
+		break;
+	    }
+	}
+	if (can_allocate) {
+	    Chunk* head = &heap->memory[i];
+	    head->tag = CHUNK_SET;
+	    head->size = size;
+	    head->is_pointer = 0;
+	    head->value = 0;
+	
+
+	    for (int j = 0; j < chunks_needed; ++j) {
 		heap->memory[i + j].tag = CHUNK_SET;
 	    }
+	    printf("Nova: Allocated %lld bytes... Span %d chunks at 0x%d\n", size, chunks_needed, i);
 	    return i;
 	}
     }
@@ -28,7 +41,8 @@ Qword nova_mem_alloc(Heap* heap, Qword size) {
 void nova_mem_free(Heap* heap, Qword ptr) {
     printf("Nova: Freeing: 0x%lld\n", ptr);
     Chunk* chunk = &heap->memory[ptr];
-    for (int i = 0; i <= chunk->size; ++i) {
+    int chunks_to_free = (chunk->size + 7) / 8;
+    for (int i = 0; i < chunks_to_free; ++i) {
 	heap->memory[ptr + i].tag = CHUNK_UNSET;
     }
     chunk->size = 0;
@@ -42,7 +56,8 @@ void nova_mem_dump(Heap* heap) {
 	if (chunk->tag == CHUNK_SET) printf("true");
 	else printf("false");
 	if (chunk->size > 0) {
-	    for (int j = 0; j <= chunk->size; ++j, ++i) {
+	    int child_chunks = (chunk->size + 7)/8;
+	    for (int j = 0; j < child_chunks; ++j, ++i) {
 		Chunk* child = &heap->memory[i + j];
 		printf("\tChunk-Child %d: { size: %lld, set: ", i, child->size);
 		if (child->tag == CHUNK_SET) printf("true");
